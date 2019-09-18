@@ -11,7 +11,23 @@ function buildWhere(table, params, whereArr = []) {
   whereArr.forEach(item => {
     if (item.param in params) {
       if (item.isLike) {
-        sqlArr.push(` ${table}."${item.param}" LIKE ${params[item.param]} `);
+        switch (item.likeRule) {
+          case 'all':
+            sqlArr.push(
+              ` ${table}."${item.param}" LIKE '%${params[item.param]}%' `
+            );
+            break;
+          case 'left':
+            sqlArr.push(
+              ` ${table}."${item.param}" LIKE '%${params[item.param]}' `
+            );
+            break;
+          case 'right':
+            sqlArr.push(
+              ` ${table}."${item.param}" LIKE '${params[item.param]}%' `
+            );
+            break;
+        }
       } else {
         sqlArr.push(` ${table}."${item.param}"=${params[item.param]} `);
       }

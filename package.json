@@ -1,6 +1,6 @@
 {
   "name": "buildwhere",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "buildWhere",
   "main": "index.js",
   "scripts": {
