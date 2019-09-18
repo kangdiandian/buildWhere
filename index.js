@@ -14,22 +14,22 @@ function buildWhere(table, params, whereArr = []) {
         switch (item.likeRule) {
           case 'all':
             sqlArr.push(
-              ` ${table}."${item.param}" LIKE '%${params[item.param]}%' `
+              ` ${table ? table + '.' : ''}"${item.param}" LIKE '%${params[item.param]}%' `
             );
             break;
           case 'left':
             sqlArr.push(
-              ` ${table}."${item.param}" LIKE '%${params[item.param]}' `
+              ` ${table ? table + '.' : ''}"${item.param}" LIKE '%${params[item.param]}' `
             );
             break;
           case 'right':
             sqlArr.push(
-              ` ${table}."${item.param}" LIKE '${params[item.param]}%' `
+              ` ${table ? table + '.' : ''}"${item.param}" LIKE '${params[item.param]}%' `
             );
             break;
         }
       } else {
-        sqlArr.push(` ${table}."${item.param}"=${params[item.param]} `);
+        sqlArr.push(` ${table ? table + '.' : ''}"${item.param}"=${params[item.param]} `);
       }
     }
   });
