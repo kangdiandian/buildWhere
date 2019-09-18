@@ -16,7 +16,7 @@ buildWhere 根据参数创建sql
     },
     {
       param: 'user_name',
-      isLike: false,
+      isLike: true,
       likeRule: 'all',
     },
   ];
