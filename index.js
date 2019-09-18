@@ -19,4 +19,4 @@ function buildWhere(table, params, whereArr = []) {
   });
   return sqlArr.join('AND');
 }
-export default buildWhere;
+module.exports = buildWhere;
